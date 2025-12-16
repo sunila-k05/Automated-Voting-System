@@ -1,4 +1,4 @@
-name: Automated Voting System CI
+name: Simple CI
 
 on:
   push:
@@ -14,11 +14,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          php-version: 8.1
+          node-version: 20
 
-      - name: PHP syntax check
-        run: |
-          find . -name "*.php" -print0 | xargs -0 -n1 php -l
+      - name: Install npm dependencies
+        run: npm install
